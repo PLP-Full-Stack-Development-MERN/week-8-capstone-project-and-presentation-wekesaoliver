@@ -1,147 +1,163 @@
-**Week 8: Capstone Project - Building Your Final MERN Application**
+# NexaChat
 
-**Objective:**
-
-- Apply your knowledge of the MERN stack to build a full-fledged application.
-- Demonstrate your understanding of project planning, architecture, and deployment.
-- Develop a comprehensive portfolio project to showcase your skills.
-
-**Project Overview:**
-
-Your task is to design, architect, and present a full-stack MERN application of your choice. This final project should reflect the culmination of all concepts learned throughout the course, including front-end and back-end integration, authentication, CRUD operations, and deployment.
-
-**Guidelines:**
-
-### 1. **Project Selection**
-Choose a project idea that aligns with your interests and skills. Some examples include:
-
-- **E-commerce Store** – Users can browse products, add items to the cart, and checkout.
-- **Task Management App** – Users can create, edit, and organize their tasks.
-- **Social Media Platform** – Users can post content, comment, and interact with others.
-- **Portfolio Website** – Showcase your projects, experience, and skills.
-
-**Pro Tip:** Choose a project that highlights your unique strengths and interests.
+**NexaChat** is a real-time messaging platform with secure user authentication, media sharing capabilities, and integrated mobile payments via M-Pesa. Built with modern web technologies, it enables seamless communication and transaction experiences in one application.
 
 ---
 
-### 2. **Project Planning**
+## 🚀 Features
+### Backend
+- 🔐 **User Authentication** – Secure login and registration using JWT and hashed passwords.
+- 💬 **Real-time Messaging** – Instant message delivery using Socket.io.
+- 📁 **Media Support** – Upload and deliver media files via Cloudinary integration.
+- 💳 **M-Pesa Integration** – Initiate and track mobile payments directly within the app.
+- 🧾 **Payment Request System** – Easily create and manage payment requests.
+- 🌐 **CORS-enabled API** – Works with frontend clients like React or Vue.
 
-**Deliverables:**
-
-- **Project Proposal:**
-  - Define the problem you are solving.
-  - Identify key features.
-  - Outline the expected user journey.
-  
-- **Wireframes & UI Designs:**
-  - Use tools like Figma or Canva to visualize your application.
-  - Ensure intuitive navigation and responsive design.
-
-- **Technical Requirements:**
-  - Define the database schema (collections and relationships).
-  - Identify third-party services (e.g., Stripe for payments, Firebase for authentication).
+### Frontend
+- 🔐 **User Authentication** – Sign up and log in with protected routes.
+- 🙋 **Profile & Settings Pages** – Manage user profiles and preferences.
+- 📶 **Online Users Tracker** – See who’s online in real time.
+- 🎨 **Theming Support** – Light/dark mode and customizable themes.
+- 🚀 **React + Vite + Tailwind CSS** – Super-fast builds and responsive UI.
+- 🔔 **Notifications** – Integrated toast messages using `react-hot-toast`.
 
 ---
 
-### 3. **Project Architecture**
+## 🧩 Problem It Solves
 
-**Suggested Folder Structure:**
+In regions where mobile money is central to daily transactions (like in Kenya), chat and payment apps are usually separate. NexaChat combines both, allowing users to:
+
+- Chat in real-time
+- Share media
+- Send or request payments, all from one place
+
+This helps streamline workflows for freelancers, small businesses, and teams needing integrated communication and payment functionality.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Backend**: Node.js, Express, MongoDB, Socket.io
+- **Authentication**: JWT, bcryptjs, cookies
+- **Media**: Cloudinary
+- **Payments**: M-Pesa Daraja API
+- **Environment Management**: dotenv
+
+---
+
+## 📦 Installation
+
+### Prerequisites
+
+- Node.js (v16+)
+- MongoDB
+- A Cloudinary account (for media handling)
+- M-Pesa Daraja credentials
+
+### Backend Setup
+
+```bash
+git clone https://github.com/wekesaoliver/NexaChat.git
+cd Nexachat/Backend
+
+# Install dependencies
+npm install
+
+# Create .env file
+cp .env.example .env
+# Fill in MongoDB URI, JWT secret, Cloudinary & M-Pesa credentials
+
+# Start the server
+npm run dev
 ```
-mern-capstone/
-│-- backend/
-│   ├── models/
-│   ├── routes/
-│   ├── controllers/
-│   ├── server.js
-│-- frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── App.js
-│-- README.md
+
+### Frontend Setup
+
+```bash
+# Clone the repository
+cd client
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
 ```
 
-**Essential Features to Implement:**
+# 📁 Folder Structure
+```
+backend/
+├── src/
+│   ├── routes/              # API route definitions
+│   ├── lib/                 # DB and socket setup
+│   ├── middleware/          # Authentication middleware
+│   ├── models/              # Chat models setup
+│   ├── utils/               # Mpesa utilities
+│   ├── controllers/         # Request handlers
+│   └── index.js             # App entry point
+├── .env                     # Environment variables
+├── package.json             # Node.js project metadata
+└── ...
+```
 
-- **Backend:**
-  - RESTful API with Express.js.
-  - MongoDB database schema design.
-  - JWT-based authentication.
-  - CRUD operations for core resources.
-
-- **Frontend:**
-  - Responsive React UI.
-  - State management (React Context/Redux).
-  - API consumption using Axios.
-  - Routing with React Router.
-
----
-
-### 4. **Implementation Timeline**
-
-| Milestone             | Description                            | Suggested Timeframe |
-|----------------------|----------------------------------------|---------------------|
-| Project Setup         | Initialize the project, install dependencies | 1 Day               |
-| Backend Development  | API development and database setup    | 3 Days              |
-| Frontend Development | UI implementation and API integration | 3 Days              |
-| Testing & Debugging  | Unit and integration tests            | 2 Days              |
-| Deployment           | Deploy app on Vercel/Render           | 1 Day                |
-
----
-
-### 5. **Deployment**
-
-**Steps for Deployment:**
-
-- Deploy the backend on **Render** or **Heroku** with environment variables.
-- Deploy the frontend on **Vercel** or **Netlify**.
-- Test the live app and ensure all features work correctly.
-
-**Required Links:**
-
-- Live application URL.
-- GitHub repository URL (frontend and backend).
+```
+client/
+├── components/         # Reusable UI components (Navbar, etc.)
+├── constants/          # Static constants and config values
+├── lib/                # Utility functions and helpers
+├── pages/              # Page components (Home, Login, Signup, etc.)
+├── store/              # Zustand stores for auth, theme, etc.
+├── App.jsx             # Main app component with routing
+├── main.jsx            # Entry point for the React app
+├── index.html          # HTML template
+├── tailwind.config.js  # Tailwind CSS configuration
+├── vite.config.js      # Vite configuration
+└── package.json        # Project metadata and dependencies
+```
 
 ---
 
-### 6. **Presentation and Documentation**
+## 📸 Screenshots
 
-**Deliverables:**
+Here’s a preview of the NexaChat application:
 
-1. **README.md file** should include:
-   - Project overview.
-   - Features list.
-   - Installation and usage guide.
-   - API documentation (if applicable).
-   - Screenshots of the project.
+| Home Page | Login Page |
+|-----------|------------|
+| ![Home Page](screenshots/home.png) | ![Login Page](screenshots/login.png) |
 
-2. **Presentation**
-   - 5-minute walkthrough of your project.
-   - Explain the problem, solution, and key features.
-   - Discuss challenges faced and future improvements.
+| Chat Interface | Media Upload |
+|----------------|---------------|
+| ![Chat](screenshots/chat.png) | ![Signup page](screenshots/signup.png) |
 
-**Recommended Tools:**
+| M-Pesa Payment | Payment Request |
+|----------------|------------------|
+| ![M-PESA payment](screenshots/mpesa.png) | ![Mobile Device](screenshots/mobile.png) |
 
-- Google Slides for presentation.
-- Loom for screen recording.
+| User Profile | Settings Page |
+|--------------|----------------|
+| ![Profile](screenshots/profile.png) | ![Settings](screenshots/settings.png) |
 
----
 
-### 7. **Evaluation Criteria**
+# 📮 API Endpoints
+Route	Description
+/api/auth	Auth (register/login)
+/api/messages	Messaging routes
+/api/mpesa	M-Pesa payment initiation
+/api/payment-requests	Payment request management
 
-Your final project will be evaluated based on the following:
+# ✨ Future Enhancements
+🔔 Push notifications
+👥 Group chat functionality
+🤖 AI-powered chatbot integration
+📈 Analytics dashboard
 
-- **Functionality (30%)** – Does the application meet its intended purpose?
-- **Code Quality (20%)** – Is the code well-structured and maintainable?
-- **UI/UX (20%)** – Is the app visually appealing and user-friendly?
-- **Documentation (15%)** – Is the project well-documented?
-- **Presentation (15%)** – Is the project presented effectively?
+# 🧑‍💻 Contributing
 
----
+1. Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+2. Fork the repository
+3. Create your feature branch (git checkout -b feature/AmazingFeature)
+4. Commit your changes (git commit -m 'Add some AmazingFeature')
+5. Push to the branch (git push origin feature/AmazingFeature)
+6. Open a pull request
 
-### 8. **Submission**
-
-- Push your code to your GitHub repository.
-- Submit your GitHub and live project links.
-
----
+© 2025 NexaChat. All rights reserved.
