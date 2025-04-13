@@ -2,6 +2,8 @@
 
 **NexaChat** is a real-time messaging platform with secure user authentication, media sharing capabilities, and integrated mobile payments via M-Pesa. Built with modern web technologies, it enables seamless communication and transaction experiences in one application.
 
+Live Link: https://nexachat-app.onrender.com/
+
 ---
 
 ## 🚀 Features
